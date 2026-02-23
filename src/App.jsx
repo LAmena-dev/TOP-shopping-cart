@@ -1,12 +1,29 @@
-// import { createBrowserRouter, RouterProvider } from "react-router";
-// import routes from "./routes.jsx";
+import {
+  Route,
+  createBrowserRouter,
+  BrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+} from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import CartPage from "./pages/CartPage";
+import ShopPage from "./pages/ShopPage";
+import NotFound from "./pages/NotFound";
 
-import React from 'react'
+const routes = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<HomePage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>,
+  ),
+);
 
 const App = () => {
-  return (
-    <div>App</div>
-  )
-}
+  return <RouterProvider router={routes}></RouterProvider>;
+};
 
-export default App
+export default App;
