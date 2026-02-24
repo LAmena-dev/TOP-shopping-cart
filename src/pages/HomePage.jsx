@@ -1,11 +1,13 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import Cards from "../components/Cards";
 
 const HomePage = () => {
   return (
     <div>
-      HomePage
+      <h1>HomePage</h1>
+      <main>
+        <p>Welcome to our online store!</p>
+      </main>
       <Cards isHome={true} />
     </div>
   );

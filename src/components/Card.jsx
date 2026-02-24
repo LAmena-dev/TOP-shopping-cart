@@ -1,22 +1,27 @@
-const Card = ({ item, isHome = false }) => {
+import ProductSection from "./ProductSection";
+
+const Card = ({ item, isHome = false, isShop = false }) => {
   return (
-    <div className="card">
-      <h3>{item.title}</h3>
-      <img
-        src={item.image}
-        alt={item.title}
-        style={{ width: "10%", height: "10%" }}
-      />
-      <p>{item.category}</p>
-      <p>${item.price}</p>
-      {isHome ? (
-        <></>
-      ) : (
+    <article>
+      <div className="card">
+        <h3>{item.title}</h3>
+        <img
+          src={item.image}
+          alt={item.title}
+          style={{ width: "10%", height: "10%" }}
+        />
+        <p>{item.category}</p>
         <p>
-          {item.rating.rate} <span>({item.rating.count})</span>
+          ${item.price}{" "}
+          {!isHome && (
+            <span>
+              | {item.rating.rate} ({item.rating.count})
+            </span>
+          )}
         </p>
-      )}
-    </div>
+      </div>
+      {!isHome && <ProductSection isShop={isShop} item={item} />}
+    </article>
   );
 };
 

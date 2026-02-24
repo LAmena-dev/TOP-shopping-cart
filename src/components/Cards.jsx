@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import fakeStoreAPI from "../apiServices/fakeStoreAPI";
 
-const Cards = ({ isHome = false }) => {
+const Cards = ({ isHome = false, isShop = false }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,11 +27,13 @@ const Cards = ({ isHome = false }) => {
 
   return (
     <main>
+      <h2>{isHome ? "Featured Products" : "All Products"}</h2>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
         selectItems.map((item) => (
-          <Card key={item.id} item={item} isHome={isHome} />
+          <Card key={item.id} item={item} isHome={isHome} isShop={isShop} />
         ))
       )}
     </main>

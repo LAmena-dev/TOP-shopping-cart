@@ -1,12 +1,16 @@
-import React from 'react'
-import Cards from '../components/Cards'
+import React from "react";
+import Cards from "../components/Cards";
+import { useOutletContext } from "react-router";
 
 const ShopPage = () => {
-  return (
-    <div>ShopPage
-      <Cards />
-    </div>
-  )
-}
+  const { setCartCount } = useOutletContext();
 
-export default ShopPage
+  return (
+    <div>
+      <h1>Shop Page</h1>
+      <Cards isShop={true} setCartCount={setCartCount} />
+    </div>
+  );
+};
+
+export default ShopPage;
